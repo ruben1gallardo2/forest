@@ -1,0 +1,134 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Tileset/Map.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/Ladder.gd" type="Script" id=3]
+[ext_resource path="res://asset/tile_set/3 Objects/Ladders/2.png" type="Texture" id=4]
+[ext_resource path="res://asset/tile_set/3 Objects/Ladders/1.png" type="Texture" id=5]
+[ext_resource path="res://main/DamageLadder.gd" type="Script" id=6]
+[ext_resource path="res://asset/tile_set/3 Objects/Ladders/5.png" type="Texture" id=7]
+[ext_resource path="res://main/MediumLadder.gd" type="Script" id=8]
+[ext_resource path="res://animated objetcs/Object.tscn" type="PackedScene" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15.3151, 143.829 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7.32202, 17.17 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 11.9061, 79.6628 )
+
+[node name="Main" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 455.125, 300 )
+collision/safe_margin = 0.062
+
+[node name="Map" parent="." instance=ExtResource( 2 )]
+position = Vector2( 157, 0 )
+
+[node name="LongLadder" type="Area2D" parent="."]
+position = Vector2( 1139.59, 301.964 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LongLadder"]
+position = Vector2( -6.05347, 83.7318 )
+scale = Vector2( 0.87, 0.87 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="LongLadder"]
+position = Vector2( -5.38867, 193.674 )
+texture = ExtResource( 5 )
+
+[node name="Sprite2" type="Sprite" parent="LongLadder"]
+position = Vector2( -5.38867, 163.683 )
+texture = ExtResource( 4 )
+
+[node name="Sprite3" type="Sprite" parent="LongLadder"]
+position = Vector2( -5.38183, 131.694 )
+texture = ExtResource( 4 )
+
+[node name="Sprite4" type="Sprite" parent="LongLadder"]
+position = Vector2( -5.41882, 99.7318 )
+texture = ExtResource( 4 )
+
+[node name="Sprite5" type="Sprite" parent="LongLadder"]
+position = Vector2( -5.45398, 67.8489 )
+texture = ExtResource( 4 )
+
+[node name="Sprite6" type="Sprite" parent="LongLadder"]
+position = Vector2( -5.45398, 35.937 )
+texture = ExtResource( 4 )
+
+[node name="Sprite7" type="Sprite" parent="LongLadder"]
+position = Vector2( -5.45398, 3.944 )
+texture = ExtResource( 4 )
+
+[node name="Sprite8" type="Sprite" parent="LongLadder"]
+position = Vector2( -5.45398, -27.974 )
+texture = ExtResource( 4 )
+
+[node name="DamageLadder" type="Area2D" parent="."]
+position = Vector2( 639.715, 57.8301 )
+gravity = 0.0
+script = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="DamageLadder"]
+position = Vector2( 1081.06, 283.103 )
+scale = Vector2( 0.73106, 1.04802 )
+texture = ExtResource( 7 )
+
+[node name="Sprite2" type="Sprite" parent="DamageLadder"]
+position = Vector2( 1081.03, 350.123 )
+scale = Vector2( 0.73106, 1.04802 )
+texture = ExtResource( 7 )
+
+[node name="Sprite3" type="Sprite" parent="DamageLadder"]
+position = Vector2( 1081.05, 316.598 )
+scale = Vector2( 0.73106, 1.04802 )
+texture = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageLadder"]
+position = Vector2( 1078.64, 288.428 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageLadder"]
+position = Vector2( 1083.07, 348.225 )
+shape = SubResource( 2 )
+
+[node name="MediumLadder" type="Area2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MediumLadder"]
+position = Vector2( 332.133, 257.99 )
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="MediumLadder"]
+position = Vector2( 333.617, 321.901 )
+texture = ExtResource( 5 )
+
+[node name="Sprite2" type="Sprite" parent="MediumLadder"]
+position = Vector2( 333.631, 289.908 )
+texture = ExtResource( 4 )
+
+[node name="Sprite3" type="Sprite" parent="MediumLadder"]
+position = Vector2( 333.631, 257.99 )
+texture = ExtResource( 4 )
+
+[node name="Sprite4" type="Sprite" parent="MediumLadder"]
+position = Vector2( 333.631, 226.016 )
+texture = ExtResource( 4 )
+
+[node name="Sprite5" type="Sprite" parent="MediumLadder"]
+position = Vector2( 333.618, 194.014 )
+texture = ExtResource( 4 )
+
+[node name="Object" parent="." instance=ExtResource( 9 )]
+position = Vector2( 552.008, 289.908 )
+[connection signal="body_entered" from="LongLadder" to="LongLadder" method="_on_Ladder_body_entered"]
+[connection signal="body_exited" from="LongLadder" to="LongLadder" method="_on_Ladder_body_exited"]
+[connection signal="body_entered" from="DamageLadder" to="DamageLadder" method="_on_DamageLadder_body_entered"]
+[connection signal="body_exited" from="DamageLadder" to="DamageLadder" method="_on_DamageLadder_body_exited"]
+[connection signal="body_entered" from="MediumLadder" to="MediumLadder" method="_on_MediumLadder_body_entered"]
+[connection signal="body_exited" from="MediumLadder" to="MediumLadder" method="_on_MediumLadder_body_exited"]
