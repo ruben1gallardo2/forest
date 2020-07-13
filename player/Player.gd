@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-
+var score = 0 
 var run_speed = 350
 var walk_speed = 150
 var jump_speed = -1000
@@ -96,15 +96,16 @@ func get_input():
 
 	if $AnimatedSprite.flip_h == true:
 		#se coloca la position de la collision shape acomodada al girar a la izquierda
-		$CollisionShape2D.position.x = 11
+		$CollisionShape2D.position.x = 9
 	else:
 		$CollisionShape2D.position.x = -1	
 		
 	if $AnimatedSprite.flip_h == true:
-				$AnimatedSprite/AttackArea/CollisionShape2D.position.x = -10
+		$AnimatedSprite/AttackArea/CollisionShape2D.position.x = -10
 	else:
-				$AnimatedSprite/AttackArea/CollisionShape2D.position.x = 9.575
-	
+		$AnimatedSprite/AttackArea/CollisionShape2D.position.x = 9.575
+
+
 	#colocamos al player a subir escaleras					
 	if ladder_on == true:		
 		gravity = 0
@@ -128,9 +129,7 @@ func get_input():
 		$AnimatedSprite.flip_h = true
 		velocity.x -= walk_speed
 		
-	
-	
-	
+
 func _on_AnimatedSprite_frame_changed():
 	#activar la mascara de colision para los diferentes ataques activandola en frames especificos
 	if ATTACK1 or ATTACK2 or ATTACK3:
@@ -138,5 +137,7 @@ func _on_AnimatedSprite_frame_changed():
 			$AnimatedSprite/AttackArea/CollisionShape2D.disabled = false
 		else:
 			$AnimatedSprite/AttackArea/CollisionShape2D.disabled = true
+
+
 
 

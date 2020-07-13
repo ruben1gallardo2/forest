@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tileset/Map.tscn" type="PackedScene" id=2]
@@ -8,7 +8,11 @@
 [ext_resource path="res://main/DamageLadder.gd" type="Script" id=6]
 [ext_resource path="res://asset/tile_set/3 Objects/Ladders/5.png" type="Texture" id=7]
 [ext_resource path="res://main/MediumLadder.gd" type="Script" id=8]
-[ext_resource path="res://animated objetcs/Object.tscn" type="PackedScene" id=9]
+[ext_resource path="res://main/Main.gd" type="Script" id=9]
+[ext_resource path="res://main/RuneChest.gd" type="Script" id=10]
+[ext_resource path="res://asset/tile_set/4 Animated objects/Rune.png" type="Texture" id=11]
+[ext_resource path="res://asset/tile_set/4 Animated objects/Chest.png" type="Texture" id=12]
+[ext_resource path="res://main/Rune.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15.3151, 143.829 )
@@ -19,116 +23,223 @@ extents = Vector2( 7.32202, 17.17 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 11.9061, 79.6628 )
 
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 12 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 12 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 12 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "Chest",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 12.4808, 6.66868 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=14]
+animations = [ {
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"loop": true,
+"name": "Rune",
+"speed": 10.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=15]
+radius = 5.10013
+height = 4.14763
+
 [node name="Main" type="Node"]
+script = ExtResource( 9 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 455.125, 300 )
+position = Vector2( 455.125, 320 )
 collision/safe_margin = 0.062
 
 [node name="Map" parent="." instance=ExtResource( 2 )]
 position = Vector2( 157, 0 )
 
-[node name="LongLadder" type="Area2D" parent="."]
+[node name="Objects" type="Node" parent="."]
+
+[node name="LongLadder" type="Area2D" parent="Objects"]
 position = Vector2( 1139.59, 301.964 )
 script = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LongLadder"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/LongLadder"]
 position = Vector2( -6.05347, 83.7318 )
 scale = Vector2( 0.87, 0.87 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="LongLadder"]
+[node name="Sprite" type="Sprite" parent="Objects/LongLadder"]
 position = Vector2( -5.38867, 193.674 )
 texture = ExtResource( 5 )
 
-[node name="Sprite2" type="Sprite" parent="LongLadder"]
+[node name="Sprite2" type="Sprite" parent="Objects/LongLadder"]
 position = Vector2( -5.38867, 163.683 )
 texture = ExtResource( 4 )
 
-[node name="Sprite3" type="Sprite" parent="LongLadder"]
+[node name="Sprite3" type="Sprite" parent="Objects/LongLadder"]
 position = Vector2( -5.38183, 131.694 )
 texture = ExtResource( 4 )
 
-[node name="Sprite4" type="Sprite" parent="LongLadder"]
+[node name="Sprite4" type="Sprite" parent="Objects/LongLadder"]
 position = Vector2( -5.41882, 99.7318 )
 texture = ExtResource( 4 )
 
-[node name="Sprite5" type="Sprite" parent="LongLadder"]
+[node name="Sprite5" type="Sprite" parent="Objects/LongLadder"]
 position = Vector2( -5.45398, 67.8489 )
 texture = ExtResource( 4 )
 
-[node name="Sprite6" type="Sprite" parent="LongLadder"]
+[node name="Sprite6" type="Sprite" parent="Objects/LongLadder"]
 position = Vector2( -5.45398, 35.937 )
 texture = ExtResource( 4 )
 
-[node name="Sprite7" type="Sprite" parent="LongLadder"]
+[node name="Sprite7" type="Sprite" parent="Objects/LongLadder"]
 position = Vector2( -5.45398, 3.944 )
 texture = ExtResource( 4 )
 
-[node name="Sprite8" type="Sprite" parent="LongLadder"]
+[node name="Sprite8" type="Sprite" parent="Objects/LongLadder"]
 position = Vector2( -5.45398, -27.974 )
 texture = ExtResource( 4 )
 
-[node name="DamageLadder" type="Area2D" parent="."]
+[node name="DamageLadder" type="Area2D" parent="Objects"]
 position = Vector2( 639.715, 57.8301 )
 gravity = 0.0
 script = ExtResource( 6 )
 
-[node name="Sprite" type="Sprite" parent="DamageLadder"]
+[node name="Sprite" type="Sprite" parent="Objects/DamageLadder"]
 position = Vector2( 1081.06, 283.103 )
 scale = Vector2( 0.73106, 1.04802 )
 texture = ExtResource( 7 )
 
-[node name="Sprite2" type="Sprite" parent="DamageLadder"]
+[node name="Sprite2" type="Sprite" parent="Objects/DamageLadder"]
 position = Vector2( 1081.03, 350.123 )
 scale = Vector2( 0.73106, 1.04802 )
 texture = ExtResource( 7 )
 
-[node name="Sprite3" type="Sprite" parent="DamageLadder"]
+[node name="Sprite3" type="Sprite" parent="Objects/DamageLadder"]
 position = Vector2( 1081.05, 316.598 )
 scale = Vector2( 0.73106, 1.04802 )
 texture = ExtResource( 7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageLadder"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/DamageLadder"]
 position = Vector2( 1078.64, 288.428 )
 shape = SubResource( 2 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageLadder"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Objects/DamageLadder"]
 position = Vector2( 1083.07, 348.225 )
 shape = SubResource( 2 )
 
-[node name="MediumLadder" type="Area2D" parent="."]
+[node name="MediumLadder" type="Area2D" parent="Objects"]
+position = Vector2( 333.701, 252.872 )
 script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MediumLadder"]
-position = Vector2( 332.133, 257.99 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/MediumLadder"]
+position = Vector2( -1.9632, 2.92734 )
 shape = SubResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="MediumLadder"]
-position = Vector2( 333.617, 321.901 )
+[node name="Sprite" type="Sprite" parent="Objects/MediumLadder"]
+position = Vector2( -0.479187, 66.8383 )
 texture = ExtResource( 5 )
 
-[node name="Sprite2" type="Sprite" parent="MediumLadder"]
-position = Vector2( 333.631, 289.908 )
+[node name="Sprite2" type="Sprite" parent="Objects/MediumLadder"]
+position = Vector2( -0.465179, 34.8453 )
 texture = ExtResource( 4 )
 
-[node name="Sprite3" type="Sprite" parent="MediumLadder"]
-position = Vector2( 333.631, 257.99 )
+[node name="Sprite3" type="Sprite" parent="Objects/MediumLadder"]
+position = Vector2( -0.465179, 2.92734 )
 texture = ExtResource( 4 )
 
-[node name="Sprite4" type="Sprite" parent="MediumLadder"]
-position = Vector2( 333.631, 226.016 )
+[node name="Sprite4" type="Sprite" parent="Objects/MediumLadder"]
+position = Vector2( -0.465179, -29.0466 )
 texture = ExtResource( 4 )
 
-[node name="Sprite5" type="Sprite" parent="MediumLadder"]
-position = Vector2( 333.618, 194.014 )
+[node name="Sprite5" type="Sprite" parent="Objects/MediumLadder"]
+position = Vector2( -0.47818, -61.0486 )
 texture = ExtResource( 4 )
 
-[node name="Object" parent="." instance=ExtResource( 9 )]
-position = Vector2( 552.008, 289.908 )
-[connection signal="body_entered" from="LongLadder" to="LongLadder" method="_on_Ladder_body_entered"]
-[connection signal="body_exited" from="LongLadder" to="LongLadder" method="_on_Ladder_body_exited"]
-[connection signal="body_entered" from="DamageLadder" to="DamageLadder" method="_on_DamageLadder_body_entered"]
-[connection signal="body_exited" from="DamageLadder" to="DamageLadder" method="_on_DamageLadder_body_exited"]
-[connection signal="body_entered" from="MediumLadder" to="MediumLadder" method="_on_MediumLadder_body_entered"]
-[connection signal="body_exited" from="MediumLadder" to="MediumLadder" method="_on_MediumLadder_body_exited"]
+[node name="Chest" type="Area2D" parent="Objects"]
+position = Vector2( 647.671, 320.901 )
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Objects/Chest"]
+position = Vector2( 0, -0.529846 )
+frames = SubResource( 8 )
+animation = "Chest"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Chest"]
+position = Vector2( -3.08176, 8.53441 )
+shape = SubResource( 9 )
+
+[node name="Tween" type="Tween" parent="Objects/Chest"]
+
+[node name="Rune" type="Area2D" parent="Objects"]
+visible = false
+position = Vector2( 644.589, 287.809 )
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Objects/Rune"]
+frames = SubResource( 14 )
+animation = "Rune"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Rune"]
+position = Vector2( 0, 1 )
+shape = SubResource( 15 )
+
+[node name="Tween" type="Tween" parent="Objects/Rune"]
+[connection signal="body_entered" from="Objects/LongLadder" to="Objects/LongLadder" method="_on_Ladder_body_entered"]
+[connection signal="body_exited" from="Objects/LongLadder" to="Objects/LongLadder" method="_on_Ladder_body_exited"]
+[connection signal="body_entered" from="Objects/DamageLadder" to="Objects/DamageLadder" method="_on_DamageLadder_body_entered"]
+[connection signal="body_exited" from="Objects/DamageLadder" to="Objects/DamageLadder" method="_on_DamageLadder_body_exited"]
+[connection signal="body_entered" from="Objects/MediumLadder" to="Objects/MediumLadder" method="_on_MediumLadder_body_entered"]
+[connection signal="body_exited" from="Objects/MediumLadder" to="Objects/MediumLadder" method="_on_MediumLadder_body_exited"]
+[connection signal="body_entered" from="Objects/Chest" to="Objects/Chest" method="_on_Chest_body_entered"]
+[connection signal="body_exited" from="Objects/Chest" to="Objects/Chest" method="_on_Chest_body_exited"]
+[connection signal="frame_changed" from="Objects/Chest/AnimatedSprite" to="Objects/Chest" method="_on_AnimatedSprite_frame_changed"]
+[connection signal="body_entered" from="Objects/Rune" to="Objects/Rune" method="_on_Rune_body_entered"]
