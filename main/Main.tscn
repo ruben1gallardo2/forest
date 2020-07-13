@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tileset/Map.tscn" type="PackedScene" id=2]
@@ -12,7 +12,8 @@
 [ext_resource path="res://main/RuneChest.gd" type="Script" id=10]
 [ext_resource path="res://asset/tile_set/4 Animated objects/Rune.png" type="Texture" id=11]
 [ext_resource path="res://asset/tile_set/4 Animated objects/Chest.png" type="Texture" id=12]
-[ext_resource path="res://main/Rune.gd" type="Script" id=13]
+[ext_resource path="res://main/Coin.gd" type="Script" id=13]
+[ext_resource path="res://asset/tile_set/4 Animated objects/Coin.png" type="Texture" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15.3151, 143.829 )
@@ -43,48 +44,130 @@ flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 96, 0, 32, 32 )
 
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 48, 0, 16, 16 )
+
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
 "frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "Chest",
 "speed": 5.0
-} ]
-
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 12.4808, 6.66868 )
-
-[sub_resource type="AtlasTexture" id=10]
-flags = 4
-atlas = ExtResource( 11 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=11]
-flags = 4
-atlas = ExtResource( 11 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=12]
-flags = 4
-atlas = ExtResource( 11 )
-region = Rect2( 32, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=13]
-flags = 4
-atlas = ExtResource( 11 )
-region = Rect2( 48, 0, 16, 16 )
-
-[sub_resource type="SpriteFrames" id=14]
-animations = [ {
-"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+}, {
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
 "loop": true,
 "name": "Rune",
 "speed": 10.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=15]
-radius = 5.10013
-height = 4.14763
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 12.4808, 6.66868 )
+
+[sub_resource type="Animation" id=20]
+resource_name = "Coins"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=21]
+radius = 4.20324
+height = 0.650391
+
+[sub_resource type="Animation" id=22]
+resource_name = "Coins"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "Coins"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "Coins"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "Coins"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3 ]
+}
 
 [node name="Main" type="Node"]
 script = ExtResource( 9 )
@@ -198,48 +281,158 @@ texture = ExtResource( 4 )
 position = Vector2( -0.47818, -61.0486 )
 texture = ExtResource( 4 )
 
-[node name="Chest" type="Area2D" parent="Objects"]
+[node name="RuneChest" type="Area2D" parent="Objects"]
 position = Vector2( 647.671, 320.901 )
 script = ExtResource( 10 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Objects/Chest"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Objects/RuneChest"]
 position = Vector2( 0, -0.529846 )
 frames = SubResource( 8 )
 animation = "Chest"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Chest"]
-position = Vector2( -3.08176, 8.53441 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/RuneChest"]
+position = Vector2( -3.082, 7.15563 )
 shape = SubResource( 9 )
 
-[node name="Tween" type="Tween" parent="Objects/Chest"]
+[node name="Tween" type="Tween" parent="Objects/RuneChest"]
 
-[node name="Rune" type="Area2D" parent="Objects"]
-visible = false
-position = Vector2( 644.589, 287.809 )
+[node name="RuneChest2" type="Area2D" parent="Objects"]
+position = Vector2( 1234.87, 512.638 )
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Objects/RuneChest2"]
+position = Vector2( 0, -0.529846 )
+frames = SubResource( 8 )
+animation = "Chest"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/RuneChest2"]
+position = Vector2( 2.918, 8.15563 )
+shape = SubResource( 9 )
+
+[node name="Tween" type="Tween" parent="Objects/RuneChest2"]
+
+[node name="Coins" type="Node" parent="Objects"]
+
+[node name="Coin" type="Area2D" parent="Objects/Coins"]
+position = Vector2( 112.639, 265.422 )
+gravity_point = true
 script = ExtResource( 13 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Objects/Rune"]
-frames = SubResource( 14 )
-animation = "Rune"
+[node name="Sprite" type="Sprite" parent="Objects/Coins/Coin"]
+texture = ExtResource( 14 )
+hframes = 4
+frame = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Rune"]
-position = Vector2( 0, 1 )
-shape = SubResource( 15 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Objects/Coins/Coin"]
+anims/Coins = SubResource( 20 )
 
-[node name="Tween" type="Tween" parent="Objects/Rune"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Coins/Coin"]
+shape = SubResource( 21 )
+
+[node name="Coin2" type="Area2D" parent="Objects/Coins"]
+position = Vector2( 192.876, 166.118 )
+gravity_point = true
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Objects/Coins/Coin2"]
+texture = ExtResource( 14 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Objects/Coins/Coin2"]
+anims/Coins = SubResource( 22 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Coins/Coin2"]
+shape = SubResource( 21 )
+
+[node name="Coin3" type="Area2D" parent="Objects/Coins"]
+position = Vector2( 275.1, 166.118 )
+gravity_point = true
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Objects/Coins/Coin3"]
+texture = ExtResource( 14 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Objects/Coins/Coin3"]
+anims/Coins = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Coins/Coin3"]
+shape = SubResource( 21 )
+
+[node name="Coin4" type="Area2D" parent="Objects/Coins"]
+position = Vector2( 387.115, 323.098 )
+gravity_point = true
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Objects/Coins/Coin4"]
+texture = ExtResource( 14 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Objects/Coins/Coin4"]
+anims/Coins = SubResource( 24 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Coins/Coin4"]
+shape = SubResource( 21 )
+
+[node name="Coin5" type="Area2D" parent="Objects/Coins"]
+position = Vector2( 527.332, 328.098 )
+gravity_point = true
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Objects/Coins/Coin5"]
+texture = ExtResource( 14 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Objects/Coins/Coin5"]
+anims/Coins = SubResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Coins/Coin5"]
+shape = SubResource( 21 )
 [connection signal="body_entered" from="Objects/LongLadder" to="Objects/LongLadder" method="_on_Ladder_body_entered"]
 [connection signal="body_exited" from="Objects/LongLadder" to="Objects/LongLadder" method="_on_Ladder_body_exited"]
 [connection signal="body_entered" from="Objects/DamageLadder" to="Objects/DamageLadder" method="_on_DamageLadder_body_entered"]
 [connection signal="body_exited" from="Objects/DamageLadder" to="Objects/DamageLadder" method="_on_DamageLadder_body_exited"]
 [connection signal="body_entered" from="Objects/MediumLadder" to="Objects/MediumLadder" method="_on_MediumLadder_body_entered"]
 [connection signal="body_exited" from="Objects/MediumLadder" to="Objects/MediumLadder" method="_on_MediumLadder_body_exited"]
-[connection signal="body_entered" from="Objects/Chest" to="Objects/Chest" method="_on_Chest_body_entered"]
-[connection signal="body_exited" from="Objects/Chest" to="Objects/Chest" method="_on_Chest_body_exited"]
-[connection signal="frame_changed" from="Objects/Chest/AnimatedSprite" to="Objects/Chest" method="_on_AnimatedSprite_frame_changed"]
-[connection signal="body_entered" from="Objects/Rune" to="Objects/Rune" method="_on_Rune_body_entered"]
+[connection signal="body_entered" from="Objects/RuneChest" to="Objects/RuneChest" method="_on_RuneChest_body_entered"]
+[connection signal="body_exited" from="Objects/RuneChest" to="Objects/RuneChest" method="_on_RuneChest_body_exited"]
+[connection signal="frame_changed" from="Objects/RuneChest/AnimatedSprite" to="Objects/RuneChest" method="_on_AnimatedSprite_frame_changed"]
+[connection signal="body_entered" from="Objects/RuneChest2" to="Objects/RuneChest2" method="_on_RuneChest_body_entered"]
+[connection signal="body_exited" from="Objects/RuneChest2" to="Objects/RuneChest2" method="_on_RuneChest_body_exited"]
+[connection signal="frame_changed" from="Objects/RuneChest2/AnimatedSprite" to="Objects/RuneChest2" method="_on_AnimatedSprite_frame_changed"]
+[connection signal="body_entered" from="Objects/Coins/Coin" to="Objects/Coins/Coin" method="_on_Coin_body_entered"]
+[connection signal="body_exited" from="Objects/Coins/Coin" to="Objects/Coins/Coin" method="_on_Coin_body_exited"]
+[connection signal="body_entered" from="Objects/Coins/Coin2" to="Objects/Coins/Coin2" method="_on_Coin_body_entered"]
+[connection signal="body_exited" from="Objects/Coins/Coin2" to="Objects/Coins/Coin2" method="_on_Coin_body_exited"]
+[connection signal="body_entered" from="Objects/Coins/Coin3" to="Objects/Coins/Coin3" method="_on_Coin_body_entered"]
+[connection signal="body_exited" from="Objects/Coins/Coin3" to="Objects/Coins/Coin3" method="_on_Coin_body_exited"]
+[connection signal="body_entered" from="Objects/Coins/Coin4" to="Objects/Coins/Coin4" method="_on_Coin_body_entered"]
+[connection signal="body_exited" from="Objects/Coins/Coin4" to="Objects/Coins/Coin4" method="_on_Coin_body_exited"]
+[connection signal="body_entered" from="Objects/Coins/Coin5" to="Objects/Coins/Coin5" method="_on_Coin_body_entered"]
+[connection signal="body_exited" from="Objects/Coins/Coin5" to="Objects/Coins/Coin5" method="_on_Coin_body_exited"]

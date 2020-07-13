@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Tileset/Tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://asset/tile_set/2 Background/Background.png" type="Texture" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Tileset/tileset3.tres" type="TileSet" id=4]
 [ext_resource path="res://Tileset/tileset4.tres" type="TileSet" id=5]
 [ext_resource path="res://Tileset/tileset5.tres" type="TileSet" id=6]
-[ext_resource path="res://animated objetcs/Object.tscn" type="PackedScene" id=7]
 
 [node name="Map" type="Node2D"]
 
@@ -52,6 +51,3 @@ motion_mirroring = Vector2( 931, 0 )
 position = Vector2( 295.968, 131.496 )
 scale = Vector2( 1.61787, 1.59329 )
 texture = ExtResource( 2 )
-
-[node name="Object" parent="." instance=ExtResource( 7 )]
-position = Vector2( 468.227, 325.594 )

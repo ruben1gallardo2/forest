@@ -31,7 +31,7 @@ func _on_Rune_body_entered(body):
 		call_deferred("queue_free")
 
 #mostrar runa al abrir
-func _on_AnimatedSprite_animation_finished():
+#func _on_AnimatedSprite_animation_finished():
 	if $AnimatedSprite.animation == "Chest" and $AnimatedSprite.frame == 3 and get_node("../Chest").open_chest == true:
 		self.visible = true
 		$AnimatedSprite.animation = "Rune"

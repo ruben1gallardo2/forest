@@ -1,7 +1,9 @@
 extends KinematicBody2D
 
+
+var coin_picked = false
 var score = 0 
-var run_speed = 350
+var run_speed = 300
 var walk_speed = 150
 var jump_speed = -1000
 var gravity = 4000
@@ -49,8 +51,8 @@ func _physics_process(delta):
 		
 	
 	velocity = move_and_slide(velocity, Vector2(0, -1))
-	
-
+	RunePicked()
+	CoinPicked()
 func transition_to(new_state):
 	state = new_state
 	match state:
@@ -129,7 +131,14 @@ func get_input():
 		$AnimatedSprite.flip_h = true
 		velocity.x -= walk_speed
 		
-
+func CoinPicked():
+	if coin_picked == true:
+		score += 1
+		print(score)
+func RunePicked():
+	if rune_chest == true:
+		print(rune_chest)
+		
 func _on_AnimatedSprite_frame_changed():
 	#activar la mascara de colision para los diferentes ataques activandola en frames especificos
 	if ATTACK1 or ATTACK2 or ATTACK3:
