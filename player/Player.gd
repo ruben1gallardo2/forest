@@ -12,7 +12,8 @@ var ladder_on = false
 var state
 var current_animation
 var new_animation
-var rune_chest = false
+var chest = false
+var rune = false
 
 enum {IDLE, WALK, RUN, JUMP, CLIMB, ATTACK1, ATTACK2, ATTACK3}
 
@@ -136,8 +137,11 @@ func CoinPicked():
 		score += 1
 		print(score)
 func RunePicked():
-	if rune_chest == true:
-		print(rune_chest)
+	if chest == true:
+		print(chest)
+		if rune == true:
+			print(rune)
+			
 		
 func _on_AnimatedSprite_frame_changed():
 	#activar la mascara de colision para los diferentes ataques activandola en frames especificos
